@@ -4,16 +4,12 @@ import { connect } from 'react-redux';
 import {
   bookAddedToCart,
   bookRemovedFromCart,
-  allBooksRemovedFromCart } from '../../actions/actions.js';
+  allBooksRemovedFromCart } from '../../actions';
 
 import './shopping-cart-table.css';
 
-
-//тащит всё говно из пропс
 const ShoppingCartTable = ({ items, total, onIncrease, onDecrease, onDelete }) => {
-  //аналог функции рендер(?)
   const renderRow = (item, idx) => {
-    //тащит всё говно из айтема и отрисовывает
     const { id, title, count, total } = item;
     return (
       <tr key={id}>
@@ -39,8 +35,8 @@ const ShoppingCartTable = ({ items, total, onIncrease, onDecrease, onDelete }) =
           </button>
         </td>
       </tr>
-    )
-  }
+    );
+  };
 
   return (
     <div className="shopping-cart-table">
@@ -57,7 +53,7 @@ const ShoppingCartTable = ({ items, total, onIncrease, onDecrease, onDelete }) =
         </thead>
 
         <tbody>
-          {items.map(renderRow)}
+        { items.map(renderRow) }
         </tbody>
       </table>
 
@@ -68,8 +64,6 @@ const ShoppingCartTable = ({ items, total, onIncrease, onDecrease, onDelete }) =
   );
 };
 
-
-//получает пропсы и присваивает их в стейт
 const mapStateToProps = ({ shoppingCart: { cartItems, orderTotal }}) => {
   return {
     items: cartItems,
@@ -77,13 +71,10 @@ const mapStateToProps = ({ shoppingCart: { cartItems, orderTotal }}) => {
   };
 };
 
-//диспатчит экшены в стейт
-//пока что пустая
 const mapDispatchToProps = {
-    onIncrease: bookAddedToCart,
-    onDecrease: bookRemovedFromCart,
-    onDelete: allBooksRemovedFromCart
+  onIncrease: bookAddedToCart,
+  onDecrease: bookRemovedFromCart,
+  onDelete: allBooksRemovedFromCart
 };
 
-//обёртка
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCartTable);

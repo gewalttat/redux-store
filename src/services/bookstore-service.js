@@ -1,33 +1,30 @@
-export default class BookStoreService {
-    data = [
-        {
-            id: 1,
-            title: 'Warcraft: Chronicle. Encyclopedia pt. 3',
-            author: 'Christopher Vincent Metzen',
-            price: 270,
-            coverImage: "https://cdn1.ozone.ru/s3/multimedia-p/c360/6008219401.jpg"
-        },
 
-        {
-            id: 2,
-            title: 'Chronicle Volume 1',
-            author: 'Christopher Vincent Metzen',
-            price: 250,
-            coverImage: "https://cdn1.ozone.ru/s3/multimedia-i/c360/6008220294.jpg"
+export default class BookstoreService {
+
+  data = [
+    {
+      id: 1,
+      title: 'Production-Ready Microservices',
+      author: 'Susan J. Fowler',
+      price: 32,
+      coverImage: 'https://images-na.ssl-images-amazon.com/images/I/41yJ75gpV-L._SX381_BO1,204,203,200_.jpg'},
+    {
+      id: 2,
+      title: 'Release It!',
+      author: 'Michael T. Nygard',
+      price: 45,
+      coverImage: 'https://images-na.ssl-images-amazon.com/images/I/414CRjLjwgL._SX403_BO1,204,203,200_.jpg'}
+  ];
+
+  getBooks() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (Math.random() > 0.75) {
+          reject(new Error('Something bad happened'));
+        } else {
+          resolve(this.data);
         }
-    ]
-
-    //возвращает промис в виде даты с задержкой 700 мс
-    //режект пока не реализован
-    getBooks() {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (Math.random() > 0.75) {
-                    reject(new Error('sasai'));
-                } else { 
-                    resolve(this.data) 
-                }
-            }, 700);
-        });
-    };
-};
+      }, 700);
+    });
+  }
+}

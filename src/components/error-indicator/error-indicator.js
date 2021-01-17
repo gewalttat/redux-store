@@ -1,12 +1,8 @@
-import React from 'react'
-import './error-indicator.css'
+import React from 'react';
+import './error-indicator.css';
+
 const ErrorIndicator = () => {
-    return (
-        <div className = 'error-indicator'>
-        <span>Something has goin' wrong!</span>
-        <br></br>
-        </div>
-    )
-}
+  return <div>Error!</div>;
+};
 
 export default ErrorIndicator;
