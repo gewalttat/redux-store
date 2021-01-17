@@ -37,7 +37,7 @@ class BookListContainer extends Component {
 }
 
 //применяет входящие стейтом свойства в пропс, кажется
-const mapStateToProps = ({ books, loading, error }) => {
+const mapStateToProps = ({ bookList: { books, loading, error }}) => {
     return { books, loading, error }
 }
 
@@ -74,6 +74,8 @@ const BookList = ({books, onAddedToCart}) => {
 console.log(typeof (booksLoaded))
 //композ принимает НОС, коннект соединяет стейт и экшен
 //они оборачивают буклист
+
+
 export default compose(
     withBookstoreService(),
     connect(mapStateToProps, mapDispatchToProps)
